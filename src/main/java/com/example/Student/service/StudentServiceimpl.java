@@ -47,8 +47,9 @@ public class StudentServiceimpl implements StudentService {
 	@Override
 	public boolean editPage(StudentDetail studentDetail) {
 		// TODO Auto-generated method stub
+		System.err.println("hekko");
 		StudentDetail edDetail = studentRepo.save(studentDetail);
-		if (getStudentById(edDetail.getId()) != null) {
+		if (studentRepo.findById(edDetail.getId())!= null) {
 			return true;
 		}
 		return false;

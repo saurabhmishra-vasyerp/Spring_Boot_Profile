@@ -11,5 +11,4 @@ public interface StudentService {
 	boolean deleteStudent (Integer id);
 	StudentDetail getStudentById(Integer id);
 	boolean editPage(StudentDetail studentDetail);
-	
 }
