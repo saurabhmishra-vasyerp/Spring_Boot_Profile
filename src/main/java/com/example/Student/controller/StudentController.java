@@ -26,14 +26,13 @@ public class StudentController {
 	@GetMapping({"/","/index"})
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView.addObject("students", studentService.getAllData());
+		modelAndView.addObject("students", studentService.getData());
 		return modelAndView;
 	}
 	@GetMapping("/{id}")
 	public String deleteStudent(@PathVariable Integer id) {
 		studentService.deleteStudent(id);
 		return "redirect:/index";
-		
 	}
 //	@GetMapping("getid/{id}")
 //	public ModelAndView editPage(@PathVariable Integer id) {
@@ -44,33 +43,35 @@ public class StudentController {
 	//}
 	
 //	@PostMapping("/EditPage")
-//	public String editSave(StudentDetail studentDetail) {
+//	public String editSave(StudentDetail studentDetail){
 //		if(studentService.editPage(studentDetail)) {
 //			return "redirect:/index";
 //		}
 //		return "EditPage";
 		
 	//}
-//	@PostMapping("/addStudent")
-//	public String addPage(@ModelAttribute("studentDetail") StudentDetail studentDetail) {
-//		if(studentService.editPage(studentDetail)) {
-//			return "redirect:/index";
-//		}
-//		return "redirect:/index";
-//	}
+	@PostMapping("/addStudent")
+	public String addPage(@ModelAttribute("studentDetail") StudentDetail studentDetail) {
+		if(studentService.editPage(studentDetail)) {
+			return "redirect:/index";
+		}
+		return "redirect:/index";
+	}
+	
 	@GetMapping("getid/{id}")
 	public ResponseEntity<StudentDetail> getMethod(@PathVariable Integer id){
+		System.err.println("hello");
 		return new ResponseEntity<StudentDetail>(studentService.getStudentById(id), HttpStatus.OK);
 		
 	}
-	@PostMapping("/addStudent")
-	public ModelAndView addpage(@ModelAttribute("studentDetail") StudentDetail studentDetail, BindingResult result) {
-		if( result.hasErrors()) {
-			System.err.println("error");
-			return new ModelAndView("redirect:/index");
-		}
-		studentService.editPage(studentDetail);
-		return new ModelAndView("redirect:/index");
-	}
+//	@PostMapping("/addStudent")
+//	public ModelAndView addpage(@ModelAttribute("studentDetail") StudentDetail studentDetail, BindingResult result) {
+//		if( result.hasErrors()) {
+//			System.err.println("error");
+//			return new ModelAndView("redirect:/index");
+//		}
+//		studentService.editPage(studentDetail);
+//		return new ModelAndView("redirect:/index");
+//	}
 	
 }

@@ -17,25 +17,8 @@
 </head>
 <body>
   <div class="container">
-  <form action="/EditPage" method="post">
-   
-  <div class="mb-3">
-    <input type="hidden" class="form-control" id="myid" name="id" value="${student.id}">
-    
+  
 
-  </div>
-  <div class="mb-3">
-    <label  class="form-label">Name:</label>
-    <input type="text" class="form-control" id="myid" name="name" value="${student.name}" >
-
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Email:</label>
-    <input type="email" class="form-control" id="myid" name="email" value="${student.email}" >
-  </div>
- 
-  <button type="submit" class="btn btn-success">Submit</button>
-</form>
   </div> 
    
 
